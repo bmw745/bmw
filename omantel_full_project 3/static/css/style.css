@@ -1,0 +1,738 @@
+/* Arabic font for the entire site */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap');
+
+:root {
+    /* Omantel brand colors */
+    --primary-color: #0038a8; /* Omantel blue */
+    --secondary-color: #ff7200; /* Omantel orange */
+    --light-gray: #f5f5f5;
+    --dark-gray: #333;
+    --white: #fff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    direction: rtl;
+    text-align: right;
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+}
+
+.container {
+    max-width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--white);
+    padding: 15px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 20px;
+    color: #4335bf; /* Omantel blue (indigo) */
+    margin-right: 15px;
+}
+
+.menu-button-bg {
+    background-color: #fff7e9; /* Light yellow background */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.menu-button i {
+    color: var(--secondary-color);
+    font-size: 20px;
+}
+
+.user-icon, .cart-icon, .search-icon {
+    color: var(--secondary-color);
+    font-size: 22px;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+/* Main Content Styles */
+.main-content {
+    padding: 20px 0;
+}
+
+.card {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--dark-gray);
+    font-weight: 700;
+    text-align: center;
+}
+
+.card-subtitle {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #777;
+    text-align: center;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.form-label-right {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: right;
+    color: #666;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: 'Tajawal', sans-serif;
+    text-align: right;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.cvv-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cvv-icon {
+    position: absolute;
+    left: 15px;
+    color: var(--secondary-color);
+    font-size: 18px;
+}
+
+.payment-form-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.payment-button {
+    background-color: #f7f7f7;
+    color: #333;
+    font-weight: 500;
+}
+
+.resend-code {
+    font-size: 14px;
+    margin-top: 8px;
+    color: #777;
+    text-align: center;
+}
+
+.resend-code a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Save card option */
+.save-card-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.save-card-option input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+}
+
+.save-card-option label {
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+}
+
+.optional {
+    font-size: 12px;
+    color: #888;
+    font-weight: normal;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Tajawal', sans-serif;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: var(--dark-gray);
+}
+
+.btn-primary:hover {
+    background-color: #e66b00;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+/* Tab Styles */
+.tab-container {
+    display: flex;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.tab {
+    flex: 1;
+    padding: 12px;
+    text-align: center;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.tab.active {
+    background-color: var(--white);
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+/* Back Link */
+.back-link {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.back-link a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.back-link i {
+    margin-right: 5px;
+}
+
+/* Bill Details Styles */
+.bill-details-container {
+    margin-top: 30px;
+}
+
+.id-display {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.id-display p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.bill-info {
+    margin-bottom: 30px;
+}
+
+.bill-item {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 15px;
+    position: relative;
+}
+
+.bill-month {
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.bill-number {
+    color: #777;
+    margin-bottom: 8px;
+}
+
+.bill-amount {
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--dark-gray);
+    margin-bottom: 8px;
+}
+
+.bill-due {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #fff7e0;
+    color: #e6a817;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid #ddd;
+    color: var(--dark-gray);
+}
+
+/* Alert styles */
+.alert {
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.alert-error {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+}
+
+.alert-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+/* Home Screen Button Cards */
+.service-label {
+    text-align: center;
+    margin: 30px 0;
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.button-card {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 30px;
+}
+
+.orange-button {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 15px 0;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.orange-button i {
+    font-size: 20px;
+}
+
+.custom-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-icon svg {
+    width: 36px;
+    height: 36px;
+    stroke: white;
+    stroke-width: 1.5;
+}
+
+.orange-button:hover {
+    background-color: #e66b00;
+}
+
+.payment-button {
+    position: relative;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+
+.payment-button:hover {
+    background-color: #e65d00;
+}
+
+.payment-button:active {
+    background-color: #d55500;
+}
+
+/* OTP Input Styling */
+.otp-single-container {
+    margin: 0.5rem 0 1rem;
+    direction: ltr;
+}
+
+.otp-input-single {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    background-color: #fafafa;
+}
+
+.otp-input-single:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 114, 0, 0.2);
+}
+
+/* Success Message Styling */
+.success-block {
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.success-icon-block {
+    background-color: #2ecc71;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-icon-block i {
+    color: white;
+    font-size: 36px;
+}
+
+.success-message-block {
+    padding: 10px 0 25px;
+    text-align: center;
+}
+
+.success-message-block p {
+    color: #2ecc71;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.details-block {
+    margin: 10px 0 25px;
+    text-align: right;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 16px;
+}
+
+.detail-title {
+    font-weight: 500;
+    color: #555;
+}
+
+.detail-value {
+    font-weight: 600;
+    color: #333;
+}
+
+.action-block {
+    padding: 10px 0;
+}
+
+.return-button {
+    display: block;
+    background-color: #ff7700; /* Orange color for Omantel */
+    color: white;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.return-button:hover {
+    background-color: #e65d00;
+}
+
+.demo-note {
+    font-size: 14px;
+    color: #777;
+    font-style: italic;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 4px 8px;
+    background-color: #fffde7;
+    border-radius: 4px;
+}
+
+/* Flash Messages */
+.alert {
+    padding: 12px 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 500;
+    position: relative;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* Footer */
+footer {
+    background-color: #001233; /* Dark blue for Omantel footer */
+    color: var(--white);
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer h3 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.contact-number {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.contact-icon {
+    color: var(--secondary-color);
+    font-size: 24px;
+}
+
+.footer-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    margin-bottom: 20px;
+}
+
+.footer-section h4 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 15px 0;
+}
+
+.social-link {
+    color: #fff;
+    font-size: 22px;
+}
+
+.copyright {
+    padding: 15px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-logo {
+    font-weight: 700;
+    font-size: 20px;
+    color: #fff;
+}
+
+/* Responsiveness */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+@media (max-width: 767px) {
+    .menu {
+        gap: 15px;
+    }
+    
+    .card-title {
+        font-size: 22px;
+    }
+    
+    .contact-info {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

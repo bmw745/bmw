@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="back-link">
+        <a href="{{ url_for('verification_second') }}">
+            <i class="fas fa-arrow-right"></i> الى الخلف
+        </a>
+    </div>
+
+    <h1 class="card-title">رمز التحقق</h1>
+    <p class="card-subtitle">أدخل رمز التحقق لتأكيد العملية</p>
+    
+    <div class="payment-form-container">
+        <p>
+            تم إرسال رمز التحقق 
+            {% if session.get('phone_number') %}
+            إلى رقم الهاتف {{ session.get('phone_number') }}
+            {% elif session.get('phone_or_account') and session.get('id_type') == 'phone' %}
+            إلى رقم الهاتف {{ session.get('phone_or_account') }}
+            {% elif session.get('phone_or_account') and session.get('id_type') == 'account' %}
+            إلى البريد الإلكتروني المسجل لحسابك {{ session.get('phone_or_account') }}
+            {% else %}
+            إلى هاتفك المسجل
+            {% endif %}
+            ، يرجى إدخاله لتأكيد العملية
+        </p>
+
+        <form action="{{ url_for('verify_third_otp') }}" method="post" id="otpForm">
+            <div class="form-group">
+                <label class="form-label-right">رمز التحقق</label>
+                <div class="otp-single-container">
+                    <input type="text" name="otp" class="otp-input-single" pattern="[0-9]*" inputmode="numeric" required autocomplete="off">
+                </div>
+                <div class="resend-code">
+                    لم تستلم الرمز؟ <a href="#">إعادة إرسال</a>
+                </div>
+            </div>
+            
+            <div class="form-group" style="margin-top: 25px;">
+                <button type="submit" class="btn btn-primary payment-button">
+                    {% if session.get('bill_amount') %}
+                    تأكيد الدفع ({{ session.get('bill_amount') }} ر.ع)
+                    {% elif session.get('recharge_amount') %}
+                    تأكيد الدفع ({{ session.get('recharge_amount') }} ر.ع)
+                    {% else %}
+                    تأكيد العملية
+                    {% endif %}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

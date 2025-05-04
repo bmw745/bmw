@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="back-link">
+        <a href="{{ url_for('payment') }}">
+            <i class="fas fa-arrow-right"></i> الى الخلف
+        </a>
+    </div>
+
+    <h1 class="card-title">عملية ناجحة</h1>
+    <p class="card-subtitle">تمت معالجة عمليتك بنجاح</p>
+    
+    <div class="success-block">
+        <div class="success-icon-block">
+            <i class="fas fa-check"></i>
+        </div>
+        
+        <div class="success-message-block">
+            {% if success_message %}
+                <p>{{ success_message }}</p>
+            {% else %}
+                <p>تمت العملية بنجاح</p>
+            {% endif %}
+        </div>
+        
+        <div class="details-block">
+            <div class="detail-row">
+                <span class="detail-title">المبلغ:</span>
+                <span class="detail-value">
+                    {% if session.get('bill_amount') %}
+                        {{ session.get('bill_amount') }} ر.ع
+                    {% elif session.get('recharge_amount') %}
+                        {{ session.get('recharge_amount') }} ر.ع
+                    {% else %}
+                        12.96 ر.ع
+                    {% endif %}
+                </span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-title">رقم الهاتف:</span>
+                <span class="detail-value">
+                    {% if session.get('phone_number') %}
+                        {{ session.get('phone_number') }}
+                    {% elif session.get('phone_or_account') and session.get('id_type') == 'phone' %}
+                        {{ session.get('phone_or_account') }}
+                    {% else %}
+                        95665656
+                    {% endif %}
+                </span>
+            </div>
+            <div class="detail-row">
+                <span class="detail-title">رقم العملية:</span>
+                <span class="detail-value">{{ transaction_number }}</span>
+            </div>
+        </div>
+        
+        <div class="action-block">
+            <a href="{{ url_for('home') }}" class="return-button" onclick="localStorage.removeItem('otp_submitted');">العودة للصفحة الرئيسية</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

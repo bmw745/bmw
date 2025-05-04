@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="error-container">
+    <div class="error-content">
+        <h1 class="error-title">حدث خطأ</h1>
+        <p class="error-message">نعتذر، حدث خطأ في الخادم. يرجى المحاولة مرة أخرى لاحقًا.</p>
+        
+        <div class="action-links">
+            <a href="{{ url_for('home') }}" class="btn btn-primary">العودة إلى الصفحة الرئيسية</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    .error-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 20px;
+        min-height: 50vh;
+    }
+    
+    .error-content {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 40px;
+        width: 100%;
+        max-width: 600px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+    
+    .error-title {
+        color: var(--primary-color);
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    
+    .error-message {
+        color: #555;
+        font-size: 18px;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+    
+    .action-links {
+        margin-top: 30px;
+    }
+    
+    .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: 600;
+        transition: background-color 0.3s;
+    }
+    
+    .btn-primary:hover {
+        background-color: #e66100;
+    }
+    
+    @media (max-width: 576px) {
+        .error-content {
+            padding: 30px 20px;
+        }
+        
+        .error-title {
+            font-size: 24px;
+        }
+        
+        .error-message {
+            font-size: 16px;
+        }
+    }
+</style>
+{% endblock %}

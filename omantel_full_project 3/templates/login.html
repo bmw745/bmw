@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-form-wrapper">
+        <h1 class="login-title">تسجيل الدخول</h1>
+        <p class="login-subtitle">أدخل بيانات تسجيل الدخول للوصول إلى لوحة التحكم</p>
+        
+        <form method="POST" action="{{ url_for('login') }}" class="login-form">
+            <div class="form-group">
+                <label for="username">اسم المستخدم</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">كلمة المرور</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary login-btn">تسجيل الدخول</button>
+            </div>
+        </form>
+        
+        <div class="login-footer">
+            <a href="{{ url_for('home') }}" class="return-link">العودة إلى الصفحة الرئيسية</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+        margin-top: 20px;
+    }
+    
+    .login-form-wrapper {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 30px;
+        width: 100%;
+        max-width: 450px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+    
+    .login-title {
+        color: var(--primary-color);
+        font-size: 26px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .login-subtitle {
+        color: #666;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .login-form {
+        margin-bottom: 20px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: border 0.3s;
+    }
+    
+    .form-control:focus {
+        border-color: var(--primary-color);
+        outline: none;
+    }
+    
+    .login-btn {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+    
+    .login-btn:hover {
+        background-color: #e66100;
+    }
+    
+    .login-footer {
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .return-link {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+    
+    .return-link:hover {
+        text-decoration: underline;
+    }
+    
+    @media (max-width: 576px) {
+        .login-form-wrapper {
+            padding: 20px;
+        }
+        
+        .login-title {
+            font-size: 22px;
+        }
+    }
+</style>
+{% endblock %}

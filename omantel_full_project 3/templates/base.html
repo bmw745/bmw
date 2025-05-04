@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omantel - خدمات الدفع</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="nav-row">
+                <a href="#" class="menu-button">
+                    <div class="menu-button-bg">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </a>
+                <a href="{{ url_for('login') }}" class="user-icon"><i class="far fa-user"></i></a>
+                <a href="#" class="cart-icon"><i class="fas fa-shopping-bag"></i></a>
+                <a href="#" class="search-icon"><i class="fas fa-search"></i></a>
+                <div class="logo">Omantel</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h3>جهات التواصل</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>رقم مركز الاتصال</span>
+                    <span class="contact-number">1234</span>
+                    <i class="fas fa-phone contact-icon"></i>
+                </div>
+                <div class="contact-item">
+                    <span>مركز اتصال الشركات</span>
+                    <span class="contact-number">1235</span>
+                    <i class="fas fa-phone contact-icon"></i>
+                </div>
+            </div>
+
+            <div class="footer-sections">
+                <!-- Company Section -->
+                <div class="footer-section">
+                    <h4>الشركة</h4>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">عن عمانتل</a>
+                        <a href="#" class="footer-link">الاستدامة</a>
+                        <a href="#" class="footer-link">الوظائف</a>
+                        <a href="#" class="footer-link">المركز الإعلامي</a>
+                        <a href="#" class="footer-link">مختبرات عمانتل للابتكار</a>
+                        <a href="#" class="footer-link">خدمة المشتركين</a>
+                    </div>
+                </div>
+
+                <!-- Help Section -->
+                <div class="footer-section">
+                    <h4>المساعدة</h4>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">قنوات الدفع</a>
+                        <a href="#" class="footer-link">المنافذ</a>
+                        <a href="#" class="footer-link">التغطية</a>
+                        <a href="#" class="footer-link">الشركات</a>
+                        <a href="#" class="footer-link">المستثمرون</a>
+                        <a href="#" class="footer-link">iSupplier</a>
+                        <a href="#" class="footer-link">أعمال الجملة</a>
+                        <a href="#" class="footer-link">المناقصات الإلكترونية</a>
+                        <a href="#" class="footer-link">تصاريح الحفريات</a>
+                        <a href="#" class="footer-link">السياسات</a>
+                    </div>
+                </div>
+
+                <!-- Policies Section -->
+                <div class="footer-section">
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">سياسة الخصوصية</a>
+                        <a href="#" class="footer-link">سياسة الإبلاغ عن المخالفات</a>
+                        <a href="#" class="footer-link">إغلاق شبكة الجيل الثالث</a>
+                    </div>
+
+                    <p>تابعونا على منصات التواصل الاجتماعي</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+
+                    <div class="footer-links" style="margin-top: 20px;">
+                        <a href="#" class="footer-link">الملكية الفكرية</a>
+                        <a href="#" class="footer-link">إتفاقية العملاء الموحدة</a>
+                        <a href="#" class="footer-link">خارطة الموقع</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <div>Oman Telecommunications Company &copy; 2024</div>
+                <div class="footer-logo">Omantel</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

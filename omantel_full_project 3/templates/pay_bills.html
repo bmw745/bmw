@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="back-link">
+        <a href="{{ url_for('home') }}">
+            <i class="fas fa-arrow-right"></i> الى الخلف
+        </a>
+    </div>
+
+    <h1 class="card-title">ادفع فواتيرك</h1>
+    <p class="card-subtitle">ادفع أي فاتورة بسهولة قم بإدخال رقم الهاتف و اختار الفاتورة و اضغط على دفع الفواتير</p>
+    
+    <div class="tab-container">
+        <div class="tab active" data-tab="phone">رقم الهاتف</div>
+        <div class="tab" data-tab="account">رقم الحساب</div>
+    </div>
+    
+    <form action="{{ url_for('pay_bills') }}" method="post" id="phone-form" class="tab-form">
+        <div class="form-group">
+            <label for="phone" class="form-label">رقم الهاتف:</label>
+            <input type="tel" id="phone" name="phone" class="form-control" maxlength="8" minlength="8" pattern="[0-9]{8}" autocomplete="off" required>
+        </div>
+        
+        <div class="form-group" style="margin-top: 30px;">
+            <button type="submit" name="check_bill" value="1" class="btn btn-secondary">التحقق من الرصيد</button>
+        </div>
+    </form>
+    
+    <form action="{{ url_for('pay_bills') }}" method="post" id="account-form" class="tab-form" style="display: none;">
+        <div class="form-group">
+            <label for="account" class="form-label">رقم الحساب:</label>
+            <input type="text" id="account" name="account" class="form-control" maxlength="9" minlength="9" pattern="[0-9]{9}" autocomplete="off" required>
+        </div>
+        
+        <div class="form-group" style="margin-top: 30px;">
+            <button type="submit" name="check_bill" value="1" class="btn btn-secondary">التحقق من الرصيد</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

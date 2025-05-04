@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <div class="back-link">
+        <a href="{{ url_for('pay_bills') }}">
+            <i class="fas fa-arrow-right"></i> الى الخلف
+        </a>
+    </div>
+
+    <h1 class="card-title">ادفع فواتيرك</h1>
+    <p class="card-subtitle">ادفع أي فاتورة بسهولة قم بإدخال رقم الهاتف و اختار الفاتورة و اضغط على دفع الفواتير</p>
+    
+    <div class="bill-details-container">
+        <div class="id-display">
+            {% if id_type == 'phone' %}
+            <p>رقم الهاتف: <strong>{{ id_number }}</strong></p>
+            {% else %}
+            <p>رقم الحساب: <strong>{{ id_number }}</strong></p>
+            {% endif %}
+        </div>
+        
+        <div class="bill-info">
+            <div class="bill-item">
+                <p class="bill-month">{{ bill.bill_month }}</p>
+                <p class="bill-number">رقم الفاتورة: {{ bill.bill_number }}</p>
+                <p class="bill-amount">ر.ع {{ bill.bill_amount }}</p>
+                <p class="bill-due">ادفع خلال {{ bill.due_days }} يوم</p>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <form action="{{ url_for('pay_bills') }}" method="post">
+                <input type="hidden" name="bill_amount" value="{{ bill.bill_amount }}">
+                <button type="submit" name="pay_bill" value="1" class="btn btn-primary">ادفع</button>
+            </form>
+            
+            <a href="#" class="btn btn-outline" id="otherAmountBtn">دفع مبلغ آخر</a>
+        </div>
+        
+        <!-- نافذة إدخال المبلغ المخصص -->
+        <div id="customAmountModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>تحديد مبلغ آخر</h3>
+                <form action="{{ url_for('pay_bills') }}" method="post">
+                    <div class="form-group">
+                        <label for="custom_amount">أدخل المبلغ (ر.ع)</label>
+                        <input type="number" id="custom_amount" name="bill_amount" step="0.001" min="1" max="100" required placeholder="المبلغ بالريال العماني">
+                    </div>
+                    <button type="submit" name="pay_bill" value="1" class="btn btn-primary">متابعة</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // التعامل مع النافذة المنبثقة للمبلغ المخصص
+    var modal = document.getElementById("customAmountModal");
+    var btn = document.getElementById("otherAmountBtn");
+    var span = document.getElementsByClassName("close")[0];
+    
+    // فتح النافذة عند النقر على الزر
+    btn.onclick = function() {
+        modal.style.display = "block";
+        document.getElementById("custom_amount").focus();
+    }
+    
+    // إغلاق النافذة عند النقر على X
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    
+    // إغلاق النافذة عند النقر خارجها
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+{% endblock %}
+
+{% block styles %}
+<style>
+    /* أنماط النافذة المنبثقة */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.7);
+    }
+
+    .modal-content {
+        background-color: #fff;
+        margin: 20% auto;
+        padding: 20px;
+        border-radius: 12px;
+        max-width: 400px;
+        width: 90%;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        position: relative;
+    }
+    
+    .close {
+        color: #aaa;
+        float: left;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+    
+    .close:hover {
+        color: #000;
+    }
+    
+    .modal h3 {
+        text-align: center;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+    }
+    
+    .modal .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .modal label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+    }
+    
+    .modal input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        direction: rtl;
+    }
+    
+    .modal .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h1 class="card-title">أعد تعبئة رصيدك الآن!</h1>
+    <p class="card-subtitle">بخطوات بسيطة وسريعة دون الحاجة إلى تسجيل الدخول</p>
+    
+    <form action="{{ url_for('recharge') }}" method="post">
+        <div class="form-group">
+            <label for="phone" class="form-label">أدخل رقم الهاتف المحمول</label>
+            <input type="tel" id="phone" name="phone" class="form-control" placeholder="xxxxxxxx" maxlength="8" minlength="8" pattern="[0-9]{8}" autocomplete="off" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="amount" class="form-label">مبلغ إعادة التعبئة</label>
+            <input type="text" id="amount" name="amount" class="form-control" placeholder="0.000" required>
+            <div style="font-size: 14px; margin-top: 5px; color: #777;">
+                الحد الأدنى: ١ ر.ع - الحد الأقصى: ١٠٠ ر.ع في اليوم
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="form-label">اختر مبلغاً محدداً</label>
+            <div class="amount-options">
+                <button type="button" class="amount-option" data-amount="5">5 ر.ع</button>
+                <button type="button" class="amount-option" data-amount="10">10 ر.ع</button>
+                <button type="button" class="amount-option" data-amount="20">20 ر.ع</button>
+                <button type="button" class="amount-option" data-amount="50">50 ر.ع</button>
+                <button type="button" class="amount-option" data-amount="100">100 ر.ع</button>
+                <button type="button" class="amount-option other-amount">مبلغ آخر</button>
+            </div>
+        </div>
+        
+        <div class="form-group" style="margin-top: 25px;">
+            <button type="submit" class="btn btn-primary">تعبئة الرصيد</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // الحصول على جميع أزرار المبالغ
+    var amountButtons = document.querySelectorAll('.amount-option');
+    var amountInput = document.getElementById('amount');
+    
+    // إضافة مستمع أحداث لكل زر
+    amountButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            // إذا كان زر "مبلغ آخر"
+            if (this.classList.contains('other-amount')) {
+                // تفريغ حقل المبلغ والتركيز عليه
+                amountInput.value = '';
+                amountInput.focus();
+            } else {
+                // إذا كان زر مبلغ محدد، نضع قيمته في حقل المبلغ
+                var amount = this.getAttribute('data-amount');
+                amountInput.value = amount;
+            }
+            
+            // إزالة التنشيط من جميع الأزرار
+            amountButtons.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            
+            // تنشيط الزر الحالي
+            this.classList.add('active');
+        });
+    });
+</script>
+{% endblock %}
+
+{% block styles %}
+<style>
+    /* أنماط أزرار المبالغ */
+    .amount-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    
+    .amount-option {
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s;
+        flex: 1 0 calc(33% - 10px);
+        min-width: 80px;
+        text-align: center;
+    }
+    
+    .amount-option:hover {
+        background-color: #e9e9e9;
+    }
+    
+    .amount-option.active {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+    }
+    
+    .other-amount {
+        background-color: #fff;
+        border: 1px dashed #aaa;
+    }
+    
+    @media (max-width: 480px) {
+        .amount-option {
+            flex: 1 0 calc(50% - 10px);
+        }
+    }
+</style>
+{% endblock %}
